@@ -767,7 +767,7 @@ insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('1005N
 insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('EZLOC16', 18101, 200);
 insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('SCF7000', 18101, 200);
 insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('MCFGL01', 18101, 100);
-insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('BLUR050R', 18101, 50);
+insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('BLUR05R', 18101, 50);
 
 insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT)values ('PAL5', 18102, 100);
 insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT)values ('PAL4', 18102, 60);
@@ -848,7 +848,7 @@ commit;
 insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('1005NL', 18201, 800);
 insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('EZLOC16', 18201, 100);
 insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('MCFGL01', 18201, 50);
-insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('BLUR050R', 18201, 50);
+insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT) values ('BLUR05R', 18201, 50);
 
 insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT)values ('PAL5', 18202, 100);
 insert into DETAIL_ACHAT (CODE_PRODUIT, NO_ACHAT, QUANTITE_ACHAT)values ('PAL4', 18202, 100);
@@ -1164,40 +1164,37 @@ commit;
 
 -- extrait de contenu - clients région Parisienne
 
-/*insert into CLIENT  values ( );*/
+create sequence seq start with 1 increment by 1;
 
-/*drop sequence seq_cli;
-create sequence seq_cli start with 1 increment by 1;*/
-
-insert into CLIENT values( 1, 'Energym', 10, 'Boulevard de Pontoise', 95000, 'Pontoise', '0134205236', 'mservant@energym.fr', 'Mme servant');
-insert into CLIENT values( 2, 'La clé des champs', '18', 'Rue des Nouvelles', '95490', 'Vauréal', '0135615879', 'e.fourdan@clé.fr', 'M Fourdan');
-insert into CLIENT values( 3, 'Formalys', '145', 'rue des Allouettes', '78000', 'Saint Germain', '0136579321', 'contact@formalys.com', 'M Cresdon');
-insert into CLIENT values( 4, 'Cartoooche', '84', 'avenue de la République', '75011', 'Paris', '0135201895', 'a.dun@cartooche.fr', 'M Dun');
-insert into CLIENT values( 5, 'Jules', '140', 'rue du faubourg Saint Honoré', '75008', 'Paris', '0135206598', 'contact@jules.com', 'M Corall');
-insert into CLIENT values( 6, 'Mavick', '32', 'rue du Général Beuret', '75015', 'Paris', '0136548790', 'dravick@mavick.fr',  'M Dravick');
-insert into CLIENT values( 7, 'Aqualia', '26', 'rue Nicolai', '7512', 'Paris', '0135659875', 'contact@aqualia.com', 'M Brilat');
-insert into CLIENT values( 8, 'Palissade', '7', 'rue de logelbach', '75017', 'Paris', '0135879632', 'contact@palissade.fr', 'Mme Vandenberck');
-insert into CLIENT values( 9, 'Caroll', '51', 'rue Anjou', '75008', 'Paris', '0135647562', 'contact@caroll.fr', 'M Durand');
-insert into CLIENT values( 10, 'Atelier Micheline', '135', 'Boulevard de Sebastopol', '75002', 'Paris', '0136546874', 'contact@at-micheline.com', 'M Fractur');
-insert into CLIENT values( 11, 'Ciamba', '12', 'rue Dauphine', '75006', 'Paris', '0135213258', 'contact@ciamba.com', 'M Dactibne');
-insert into CLIENT values( 12, 'Antalia', '3', 'rue du colonel Moll', '75017', 'Paris', '0134542655', 'contact@antalia.fr', 'M Martin');
-insert into CLIENT values( 13, 'Amaurize', '18', 'rue Saint Ferdinand', '75017', 'Paris', '0135213265', 'a.lutin@amaurize.com', 'Mme Lutin');
-insert into CLIENT values( 14, '3 Merveilles', '103', 'rue de Rennes', '75006', 'Paris', '0135213658', 'contact@3merveilles.com', 'M Detallis');
-insert into CLIENT values( 15, 'Arkano', '27', 'rue de Linne', '75005', 'Paris', '0134206741', 'b.lorginel@arkano.fr', 'Mme Lorginel');
+insert into CLIENT values( nextval('seq'), 'Energym', 10, 'Boulevard de Pontoise', 95000, 'Pontoise', '0134205236', 'mservant@energym.fr', 'Mme servant');
+insert into CLIENT values( nextval('seq'), 'La clé des champs', '18', 'Rue des Nouvelles', '95490', 'Vauréal', '0135615879', 'e.fourdan@clé.fr', 'M Fourdan');
+insert into CLIENT values( nextval('seq'), 'Formalys', '145', 'rue des Allouettes', '78000', 'Saint Germain', '0136579321', 'contact@formalys.com', 'M Cresdon');
+insert into CLIENT values( nextval('seq'), 'Cartoooche', '84', 'avenue de la République', '75011', 'Paris', '0135201895', 'a.dun@cartooche.fr', 'M Dun');
+insert into CLIENT values( nextval('seq'), 'Jules', '140', 'rue du faubourg Saint Honoré', '75008', 'Paris', '0135206598', 'contact@jules.com', 'M Corall');
+insert into CLIENT values( nextval('seq'), 'Mavick', '32', 'rue du Général Beuret', '75015', 'Paris', '0136548790', 'dravick@mavick.fr',  'M Dravick');
+insert into CLIENT values( nextval('seq'), 'Aqualia', '26', 'rue Nicolai', '7512', 'Paris', '0135659875', 'contact@aqualia.com', 'M Brilat');
+insert into CLIENT values( nextval('seq'), 'Palissade', '7', 'rue de logelbach', '75017', 'Paris', '0135879632', 'contact@palissade.fr', 'Mme Vandenberck');
+insert into CLIENT values( nextval('seq'), 'Caroll', '51', 'rue Anjou', '75008', 'Paris', '0135647562', 'contact@caroll.fr', 'M Durand');
+insert into CLIENT values( nextval('seq'), 'Atelier Micheline', '135', 'Boulevard de Sebastopol', '75002', 'Paris', '0136546874', 'contact@at-micheline.com', 'M Fractur');
+insert into CLIENT values( nextval('seq'), 'Ciamba', '12', 'rue Dauphine', '75006', 'Paris', '0135213258', 'contact@ciamba.com', 'M Dactibne');
+insert into CLIENT values( nextval('seq'), 'Antalia', '3', 'rue du colonel Moll', '75017', 'Paris', '0134542655', 'contact@antalia.fr', 'M Martin');
+insert into CLIENT values( nextval('seq'), 'Amaurize', '18', 'rue Saint Ferdinand', '75017', 'Paris', '0135213265', 'a.lutin@amaurize.com', 'Mme Lutin');
+insert into CLIENT values( nextval('seq'), '3 Merveilles', '103', 'rue de Rennes', '75006', 'Paris', '0135213658', 'contact@3merveilles.com', 'M Detallis');
+insert into CLIENT values( nextval('seq'), 'Arkano', '27', 'rue de Linne', '75005', 'Paris', '0134206741', 'b.lorginel@arkano.fr', 'Mme Lorginel');
 
 
 -- extrait de contenu - clients région Nord / Pas de Calais
 
-insert into CLIENT values( 16, 'Decathlon', '25', 'Avenue Watrelos', '59650', 'Villeneuve', '0339275236', null, 'M Vanderelst' );
-insert into CLIENT values( 17, 'Castorama', '15', 'Rue des plages', '59175', 'Templemars', '0336215879', 'contact@castorama.fr', 'M Didire' );
-insert into CLIENT values( 18, 'Fnac', '120', 'rue des Mirails', '59264', 'Onnaing', '0356879321', 'contact@fnac.fr', 'Mme Crespin' );
-insert into CLIENT values( 19, 'Dalkia France', '45', 'Boulevard Marchand', '59350', 'Saint André les Lille', '0356865871', 'm.dreschler@dalkia.fr', 'Mme Dreschler' );
-insert into CLIENT values( 20, 'Maes', '36', 'Rue des pyramides', '59000', 'Lille', '0356766821', 'd.despadre@maes.fr', 'M Despadre' );
-insert into CLIENT values( 21, 'Lunginnov', '36', 'Rue dix bars', '59000', 'Lille', '0355676354', 'contact@lunginnov.fr', 'M Attaf' );
-insert into CLIENT values( 22, 'Yarzo', '44', 'Avenue Marx Dormoy', '59000', 'Lille', '0356246387', 'y.attof@yarzo.com', 'M Yassin Attof' );
-insert into CLIENT values( 23, 'Meunier', '15', 'Rue de Tournai', '59000', 'Lille', '0365322522', 'i.meunier@meunier.fr', 'M Meunier' );
-insert into CLIENT values( 24, 'Jules', '61', 'Avenue du peuple Belge', '59800', 'Lille', '0323543325', 'f.duperche@jules.fr', 'M Duperche' );
-insert into CLIENT values( 25, 'Armelle', '22', 'Place des Reignaux', '59800', 'Lille', '0331256484', 'contact@armelle.fr', 'M Yakamoz' );
+insert into CLIENT values( nextval('seq'), 'Decathlon', '25', 'Avenue Watrelos', '59650', 'Villeneuve', '0339275236', null, 'M Vanderelst' );
+insert into CLIENT values( nextval('seq'), 'Castorama', '15', 'Rue des plages', '59175', 'Templemars', '0336215879', 'contact@castorama.fr', 'M Didire' );
+insert into CLIENT values( nextval('seq'), 'Fnac', '120', 'rue des Mirails', '59264', 'Onnaing', '0356879321', 'contact@fnac.fr', 'Mme Crespin' );
+insert into CLIENT values( nextval('seq'), 'Dalkia France', '45', 'Boulevard Marchand', '59350', 'Saint André les Lille', '0356865871', 'm.dreschler@dalkia.fr', 'Mme Dreschler' );
+insert into CLIENT values( nextval('seq'), 'Maes', '36', 'Rue des pyramides', '59000', 'Lille', '0356766821', 'd.despadre@maes.fr', 'M Despadre' );
+insert into CLIENT values( nextval('seq'), 'Lunginnov', '36', 'Rue dix bars', '59000', 'Lille', '0355676354', 'contact@lunginnov.fr', 'M Attaf' );
+insert into CLIENT values( nextval('seq'), 'Yarzo', '44', 'Avenue Marx Dormoy', '59000', 'Lille', '0356246387', 'y.attof@yarzo.com', 'M Yassin Attof' );
+insert into CLIENT values( nextval('seq'), 'Meunier', '15', 'Rue de Tournai', '59000', 'Lille', '0365322522', 'i.meunier@meunier.fr', 'M Meunier' );
+insert into CLIENT values( nextval('seq'), 'Jules', '61', 'Avenue du peuple Belge', '59800', 'Lille', '0323543325', 'f.duperche@jules.fr', 'M Duperche' );
+insert into CLIENT values( nextval('seq'), 'Armelle', '22', 'Place des Reignaux', '59800', 'Lille', '0331256484', 'contact@armelle.fr', 'M Yakamoz' );
 
 commit;
 
