@@ -10,9 +10,11 @@ create table ACHAT
 create table VENTE
 ();
 
+
+/* DIMENSION */
 create table FOURNISSEUR
 (
-    id int not null,
+    no_fournisseur int not null,
     nom_fournisseur VARCHAR(50),
     norue VARCHAR(10),
     rue VARCHAR(100),
@@ -23,7 +25,17 @@ create table FOURNISSEUR
 );
 
 create table CLIENT
-();
+(
+    no_client int not null,
+    nom_client VARCHAR(50),
+    norue VARCHAR(10),
+    rue VARCHAR(100),
+    cpostal int,
+    ville VARCHAR(100),
+    notel VARCHAR(10),
+    email VARCHAR(100),
+    nom_contact VARCHAR(50)
+);
 
 create table TEMPS
 ();
