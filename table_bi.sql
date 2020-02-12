@@ -41,16 +41,33 @@ create table TEMPS
 ();
 
 create table PRODUIT
-();
+(
+    code_produit VARCHAR(8) not null,
+    no_categorie int not null,
+    no_emplacement int not null,
+    utilisation VARCHAR(50),
+    description VARCHAR(100),
+    quantite_stock int,
+    date_stock TIMESTAMP,
+    comment_produit VARCHAR(100),
+    longeur NUMERIC,
+    hauteur NUMERIC,
+    prix_piece_ht numeric
+);
 
 create table EMPLACEMENT
-();
+(
+    no_emplacement int not null,
+    hangar int,
+    allee int
+);
 
 create table CATEGORIE
 ();
 
 create table DEPOT
 (
+    no_depot int not null,
     nom_depot VARCHAR(100),
     norue VARCHAR(10),
     rue VARCHAR(100),
