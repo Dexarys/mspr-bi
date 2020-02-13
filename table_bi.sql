@@ -38,7 +38,14 @@ create table CLIENT
 );
 
 create table TEMPS
-();
+(
+    id_date int not null,
+    jour int,
+    mois int,
+    annee int,
+    trimestre int,
+    saison int
+);
 
 create table PRODUIT
 (
@@ -63,7 +70,11 @@ create table EMPLACEMENT
 );
 
 create table CATEGORIE
-();
+(
+    no_categorie int not null,
+    cat_no_categorie int,
+    nom_categorie VARCHAR(50)
+);
 
 create table DEPOT
 (
@@ -74,12 +85,5 @@ create table DEPOT
     cpostal INT,
     ville VARCHAR(100)
 );
-
-create table CRITERES
-();
-
-
-create table TENDANCES
-();
 
 
