@@ -5,10 +5,24 @@ Pas de gestion des droits
 
 /* TABLE DE FAIT */
 create table ACHAT
-();
+(
+    no_fournisseur int not null,
+    id_date int not null,
+    code_produit VARCHAR(8),
+    no_depot int not null,
+    quantite int,
+    montant NUMERIC
+);
 
 create table VENTE
-();
+(
+    no_client int not null,
+    id_date int not null,
+    code_produit VARCHAR(8),
+    no_depot int not null,
+    quantite int,
+    montant NUMERIC
+);
 
 
 /* DIMENSION */
