@@ -1,13 +1,3 @@
-/* ============================================================= */
-/* suppression du compte utilisateur so_emballage		 */
-/*      ignorez l'ereur si celui-ci n'existait pas 		 */
-/* cr�ation du compte utilisateur so_emballage			 */
-/* attribution de droits au compte utilisateur so_emballage	 */
-/* connexion avec le compte utilisateur so_emballage		 */
-/* ============================================================= */
-
-
-
 /*==============================================================*/
 /* Table : DW_CLIENT                                            */
 /*==============================================================*/
@@ -104,6 +94,9 @@ create table DW_TABLE_DE_FAIT_PRODUIT
    LARGEUR              DECIMAL(5,2),
    HAUTEUR              DECIMAL(5,2),
    PRIX_PIECE_HT        DECIMAL(5,2),
+   NO_COMPOSER          SMALLINT,
+   NO_FOURNISSEUR       SMALLINT,
+   NO_PROPOSER          SMALLINT,
    constraint PK_CODE_PRODUIT primary key (CODE_PRODUIT)
 );
 
@@ -134,12 +127,47 @@ create table DW_DATE
 );
 
 
+/*==============================================================*/
+/* Table : COMPOSER                                             */
+/*==============================================================*/
+create table COMPOSER 
+(
+   NO_COMPOSER        SMALLINT          not null,
+   NO_MATIERE           SMALLINT            not null,
+   constraint PK_COMPOSER primary key (NO_COMPOSER)
+); 
 
+/*==============================================================*/
+/* Table : MATIERE                                              */
+/*==============================================================*/
+create table MATIERE 
+(
+   NO_MATIERE           SMALLINT            not null,
+   NOM_MATIERE          VARCHAR(70),
+   constraint PK_MATIERE primary key (NO_MATIERE)
+);
+
+
+/*==============================================================*/
+/* Table : PROPOSER                                             */
+/*==============================================================*/
+create table PROPOSER 
+(
+   NO_PROPOSER          SMALLINT          not null,
+   NO_FOURNISSEUR       SMALLINT          not null,
+   constraint PK_PROPOSER primary key (NO_PROPOSER)
+);
+
+
+
+
+alter table COMPOSER
+    add constraint FK_NO_MATIERE foreign key (NO_MATIERE)
+        references MATIERE (NO_MATIERE);
 
 alter table DW_FOURNISSEUR
    add constraint FK_ID_ADRESSE foreign key (ID_ADRESSE)
       references DW_ADRESSE (ID_ADRESSE);
-
 
 alter table DW_CLIENT
    add constraint FK_ID_ADRESSE foreign key (ID_ADRESSE)
@@ -176,61 +204,15 @@ alter table DW_TABLE_DE_FAIT_PRODUIT
 alter table DW_TABLE_DE_FAIT_PRODUIT
    add constraint FK_ID_DATE_LIVRAISON foreign key (ID_DATE_LIVRAISON)
       references DW_DATE (DATE);
-	  
-/*================================== AVANT CEST OK ===============================*/
 
+alter table DW_TABLE_DE_FAIT_PRODUIT
+    add constraint FK_NO_COMPOSER foreign key (NO_COMPOSER)
+        references COMPOSER (NO_COMPOSER); 
 
+alter table DW_TABLE_DE_FAIT_PRODUIT
+    add constraint FK_NO_PROPOSER foreign key (NO_PROPOSER)
+        references PROPOSER (NO_PROPOSER);
 
-
-
-
-
-
-
-/*==============================================================*/
-/* Table : COMPOSER                                             */
-/*==============================================================*/
-create table COMPOSER 
-(
-   CODE_PRODUIT         VARCHAR(8)          not null,
-   NO_MATIERE           SMALLINT            not null,
-   constraint PK_COMPOSER primary key (CODE_PRODUIT, NO_MATIERE)
-);
-
-/*==============================================================*/
-/* Table : MATIERE                                              */
-/*==============================================================*/
-create table MATIERE 
-(
-   NO_MATIERE           SMALLINT            not null,
-   NOM_MATIERE          VARCHAR(70),
-   constraint PK_MATIERE primary key (NO_MATIERE)
-);
-
-
-
-/*==============================================================*/
-/* Table : PROPOSER                                             */
-/*==============================================================*/
-create table PROPOSER 
-(
-   CODE_PRODUIT         VARCHAR(8)          not null,
-   NO_FOURNISSEUR       SMALLINT            not null,
-   constraint PK_PROPOSER primary key (CODE_PRODUIT, NO_FOURNISSEUR)
-);   
-
-
-
-
-
-/*================ DELETE DATA ==================*/
-
-DELETE FROM DW_TABLE_DE_FAIT_PRODUIT;
-DELETE FROM DW_STOCK;
-DELETE FROM DW_CLIENT;
-DELETE FROM DW_SITE_STOCK;
-DELETE FROM DW_ACHAT;
-DELETE FROM DW_VENTE;
-DELETE FROM DW_DATE;
-DELETE FROM DW_FOURNISSEUR;
-DELETE FROM DW_ADRESSE;
+alter table PROPOSER
+    add constraint FK_NO_FOURNISSEUR foreign key (NO_FOURNISSEUR)
+        references DW_FOURNISSEUR (NO_FOURNISSEUR);
