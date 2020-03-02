@@ -43,9 +43,24 @@ create table DW_FOURNISSEUR
 /*==============================================================*/
 create table DW_SITE_STOCK 
 (
-   ID_SITE              SMALLINT  not null,
+   ID_SITE_STOCK              SMALLINT  not null,
    HANGAR               SMALLINT,
    ALLEE                SMALLINT,
+   constraint PK_ID_SITE_STOCK primary key (ID_SITE_STOCK)
+);
+
+/*==============================================================*/
+/* Table : DW_SITE                                           */
+/*==============================================================*/
+create table DW_SITE 
+(
+   ID_SITE              SMALLINT  not null,
+   ID_SITE_STOCK        SMALLINT,
+   NOM_SITE               VARCHAR(MAX),
+   NORUE                VARCHAR(10),
+   RUE                  VARCHAR(100),
+   CPOSTAL              INT,
+   VILLE                VARCHAR(100),
    constraint PK_ID_SITE primary key (ID_SITE)
 );
 
@@ -183,7 +198,11 @@ alter table DW_VENTE
 
 alter table DW_STOCK
    add constraint FK_ID_SITE foreign key (ID_SITE)
-      references DW_SITE_STOCK (ID_SITE);
+      references DW_SITE (ID_SITE);
+
+alter table DW_SITE
+    add constraint FK_ID_SITE_STOCK foreign key (ID_SITE_STOCK)
+        references DW_SITE_STOCK (ID_SITE_STOCK);
 	  
 alter table DW_TABLE_DE_FAIT_PRODUIT
    add constraint FK_ID_ACHAT foreign key (ID_ACHAT)
